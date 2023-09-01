@@ -42,7 +42,7 @@ def main():
     datos = generar_lista(archivo)
     codigos = ingreso_codigos()
     imprimir_datos(codigos, datos)
-
+    archivo.close()
 
 if __name__ == "__main__":
     main()

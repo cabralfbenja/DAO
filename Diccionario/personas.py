@@ -32,6 +32,7 @@ def leer_archivo(f):
         diccionario[items[0]]["nombre"] = items[1]
         diccionario[items[0]]["apellido"] = items[2]
         diccionario[items[0]]["edad"] = int(items[3])
+    archivo.close()
     return diccionario
 
 

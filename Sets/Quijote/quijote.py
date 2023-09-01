@@ -16,7 +16,7 @@ def leer_archivo(f):
     for linea in archivo.readlines():
         limpia = re.sub("[^a-zA-Z]", " ", linea)
         palabras.update(limpia.lower().split())
-    
+    archivo.close()
     return palabras
 
 def main():
