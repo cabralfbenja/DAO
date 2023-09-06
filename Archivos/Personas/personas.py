@@ -11,5 +11,5 @@ def main():
         if datos[2] == apellido.upper():
             count += 1
             print(count, "| Nombre:", datos[1], "| Edad:", datos[3])
-    
+    archivo.close()
 main()
