@@ -33,16 +33,25 @@ def multiploDe(n):
 def calcular_desvEst(numeros):
     media = sum(numeros) / len(numeros)
 
-    # Calcular la varianza utilizando una función lambda y map
     varianza = sum(map(lambda x: (x - media) ** 2, numeros)) / len(numeros)
 
-    # Calcular la desviación estándar como la raíz cuadrada de la varianza
     desviacion_estandar = math.sqrt(varianza)
     return desviacion_estandar
 
+def imprimir(lista):
+    for item in lista:
+        print(item, end=" | ")
+
+def imprimir127(multiplosDe127):
+    if(len(multiplosDe127)):
+        print("\nExisten múltiplos de 127")
+        
+    else:
+        print("\nNo existen múltiplos de 127")
+
+
 def main():
     numeros = generar_numeros_aleatorios(1000)
-    imprimir = lambda x: print(x, end=" | ")
     esMinimo = lambda x, y: x if x < y else y
     esPar = lambda x: x%2 == 0
     cuadrado = lambda x: x*x
@@ -56,11 +65,8 @@ def main():
     cuadrados = list(map(cuadrado, numerosEntre10y100))
     multiplosDe3 = list(filter(multiploDe(3), cuadrados))
     multiplosDe7 = list(filter(multiploDe(7), numeros))
-    m7_ordenados = sorted(multiplosDe7, reverse=True)
-    negativos = list(filter(esNegativo, numeros))
     imparesNegativos = list(filter(lambda x: esNegativo(x) and not esPar(x), numeros))
-    suma_impares_negativos = reduce(lambda x, y: x + y, imparesNegativos)
-    promedio_impares_negativos = suma_impares_negativos / len(imparesNegativos)
+    promedio_impares_negativos = reduce(lambda x, y: x + y, imparesNegativos) / len(imparesNegativos)
     desviacion_estandar = calcular_desvEst(numeros)
     multiplosDe127 = list(filter(multiploDe(127), numeros))
     listaEspecifica = list(filter(lambda x: (x%10 == 2) or (x%10 == 3), numeros))
@@ -70,21 +76,19 @@ def main():
     print("\nLa cantidad de pares es: ", len(pares))
     
     print("\nEl cuadrado de todos los que se encuentren entre 10 y 100:")
-    imprimeCuadrados = list(map(imprimir, cuadrados))
+    imprimir(cuadrados)
     
     print("\n\nLos múltiplos de 3 del punto anterior:")
-    imprimeMultiplosDe3 = list(map(imprimir, multiplosDe3))
-    
+    imprimir(multiplosDe3)
+
     print("\n\nTodos los múltiplos de 7 ordenados en forma descendente:")
-    imprimirMultiplosDe7 = list(map(imprimir, m7_ordenados))
+    imprimir(sorted(multiplosDe7, reverse=True))
 
     print("\n\nEl promedio de los impares negativos:", promedio_impares_negativos)
     print("\n\nLa desviación estandar de todos:", desviacion_estandar)
-    if(len(multiplosDe127)):
-        print("\nExisten múltiplos de 127")
-    else:
-        print("\nNo existen múltiplos de 127")
+    imprimir127(multiplosDe127)
+    
     print("\n\nLista de los que terminan en 2 o 3:")
-    imprimirLista = list(map(imprimir, listaEspecifica))
+    imprimir(listaEspecifica)
 if __name__ == "__main__":
     main()
