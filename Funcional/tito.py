@@ -19,39 +19,39 @@ def menu():
     opc = input("Escoja la opcion deseada(F para terminar): ")
     return opc.lower()
 
+def validar400(n):
+    return 400 if n > 400 else n
+
+def validarCero(n):
+    return 0 if n < 0 else n
+
+def validarPunto(punto):
+    punto[0] = validar400(punto[0])
+    punto[0] = validarCero(punto[0])
+    punto[1] = validar400(punto[1])
+    punto[1] = validarCero(punto[1])
+    return punto
 
 
 def main():
-    x = random.randint(0, 400)
-    y = random.randint(0, 400)
-    mayor400 = lambda x: x>400
-    menorA_cero = lambda x: x<0
-    punto = [x, y]
+    
+    opcion = {
+        "n": lambda x,y: [x, y+10],
+        "s": lambda x,y: [x, y-20],
+        "e": lambda x,y: [x+10, y],
+        "o": lambda x,y: [x-20, y]
+    }
+
+    punto = [random.randint(0, 400), 
+             random.randint(0, 400)]
+
     opc = " "
     print("Sus coordenadas iniciales son: ", punto)
     while opc != "f":
         opc = menu()
-        if(opc == "n"):
-            punto[1] += 10
-            if(mayor400(punto[1])):
-                punto[1] = 400
-        elif(opc == "s"):
-            punto[1] -= 20
-            if(menorA_cero(punto[1])):
-                punto[1] = 0
-        elif(opc == "e"):
-            punto[0] += 10
-            if(mayor400(punto[0])):
-                punto[0] = 400
-        elif(opc == "o"):
-            punto[0] -= 20
-            if(menorA_cero(punto[0])):
-                punto[0] = 0
-        elif(opc == "f"):
-            print("Bye Bye")
-        else:
-            print("Opcion no válida...")
-        if(opc != "f"):
+
+        if(opc in ["n", "s", "e", "o"]):
+            punto = validarPunto(opcion[opc](punto[0], punto[1]))
             print("Sus coordenadas son: ", punto)
     print("Sus coordenadas finales fueron: ", punto)
 
