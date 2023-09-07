@@ -19,12 +19,7 @@ import math
 from functools import reduce
 
 def generar_numeros_aleatorios(cantidad):
-    contador = 0
-    lista = []
-    while contador < cantidad:
-        numero = random.randint(-100000, 100000)
-        lista.append(numero)
-        contador += 1
+    lista = [random.randint(-100000, 100000) for i in range(cantidad)]
     return lista
 
 def multiploDe(n):
