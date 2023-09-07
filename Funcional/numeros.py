@@ -42,8 +42,7 @@ def imprimir127(multiplosDe127):
         print("\nExisten múltiplos de 127")
         
     else:
-        print("\nNo existen múltiplos de 127")
-
+        print("\nNo existen múltiplos de 127")            
 
 def main():
     numeros = generar_numeros_aleatorios(1000)
@@ -64,7 +63,7 @@ def main():
     promedio_impares_negativos = reduce(lambda x, y: x + y, imparesNegativos) / len(imparesNegativos)
     desviacion_estandar = calcular_desvEst(numeros)
     multiplosDe127 = list(filter(multiploDe(127), numeros))
-    listaEspecifica = list(filter(lambda x: (x%10 == 2) or (x%10 == 3), numeros))
+    listaEspecifica = list(filter(lambda x: ((abs(x)%10 == 2) or (abs(x)%10 == 3)), numeros))
 
     print("Generador de números random, operando de manera funcional")
     print("El minimo es: ", minimo)
