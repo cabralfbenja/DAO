@@ -1,3 +1,5 @@
+from Carga import *
+
 class Camion:
     def __init__(self, patente, carga_max) -> None:
         self._patente = patente
