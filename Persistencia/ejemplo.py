@@ -26,5 +26,6 @@ cursor.execute("SELECT * FROM articulos")
 while fila := cursor.fetchone():
     print(fila)
 
-
+cursor.close()
+conn.close()
     
